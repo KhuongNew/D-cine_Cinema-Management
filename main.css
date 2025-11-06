@@ -1,0 +1,175 @@
+/* ====== base từ home.css ====== */
+:root{
+  --bg:#050505; --panel:#0b0b0d; --panel-2:#0f0f12;
+  --text:#fff; --muted:#b9b9b9;
+  --cine:#E50914; --cine-d:#b20710;
+  --stroke:#2a2a2a; --radius:14px;
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+  --shadow-red:0 10px 30px rgba(229,9,20,.25);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+.container{max-width:1240px;margin:auto;padding:0 18px}
+main{padding-top:66px}
+.section{padding:34px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sec-head h2{font-size:22px;font-weight:800;margin:0}
+.more-link{color:var(--muted);font-weight:700;letter-spacing:.2px;position:relative}
+.more-link::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.more-link:hover{color:var(--cine)} .more-link:hover::after{transform:scaleX(1)}
+
+/* === HERO === */
+.hero{position:relative;min-height:62vh;border-radius:20px;margin:16px 0 24px;overflow:hidden;background:#0a0a0a}
+.hero .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+.hero .backdrop{position:absolute;inset:0;background-size:cover;background-position:center;filter:contrast(1.02) saturate(1.03);opacity:.92;transition:transform .2s ease}
+.hero::before{content:'';position:absolute;inset:0;background:
+  linear-gradient(180deg, rgba(5,5,5,.65), rgba(5,5,5,0) 35%),
+  linear-gradient(0deg, rgba(5,5,5,.85) 10%, rgba(5,5,5,0) 60%)}
+.hero-inner{position:relative;z-index:1;max-width:760px;padding:72px 18px 90px}
+.h-eyebrow{font-size:12px;letter-spacing:.18em;color:#ffb3b8;text-transform:uppercase;opacity:.9;margin-bottom:8px}
+.hero h1{font-weight:800;font-size:clamp(28px,5vw,56px);line-height:1.05;margin:0 0 10px;text-shadow:0 8px 40px rgba(0,0,0,.5)}
+.hero p{color:#e9e9e9;max-width:58ch;opacity:.92;margin:0 0 18px}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;justify-content:center;height:44px;padding:0 14px;border-radius:12px;border:0;cursor:pointer;font-weight:800;letter-spacing:.2px;color:#fff;background:linear-gradient(180deg,#F01A25,var(--cine-d));box-shadow:0 10px 24px rgba(229,9,20,.28)}
+.btn.outline{background:transparent;border:1px solid #6b6b6b;color:#eee;box-shadow:none}
+
+/* === Poster (giữ style cũ: rate + overlay ov) === */
+.poster{flex:0 0 220px;position:relative;border-radius:16px;overflow:hidden;background:#0a0a0a;box-shadow:var(--shadow);scroll-snap-align:center;transform-origin:center bottom;transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s,opacity .35s}
+.poster img{width:100%;height:320px;object-fit:cover;display:block}
+.poster::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.55) 65%);opacity:.6;transition:opacity .3s}
+.poster.is-center{transform:translateY(-6px) scale(1.05) rotateY(0.0001deg);box-shadow:var(--shadow-red)}
+.poster.is-center::after{opacity:.15}
+.rate{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.64);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:12px;padding:6px 10px;border-radius:999px}
+.meta-chip{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.64);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:12px;padding:6px 10px;border-radius:999px}
+.ov{position:absolute;inset:auto 0 0 0;display:flex;gap:8px;justify-content:center;padding:10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.85));transform:translateY(100%);transition:transform .25s}
+.poster:hover .ov{transform:translateY(0)}
+.ov .btn{height:38px;padding:0 12px;border-radius:10px}
+
+/* === Carousel base === */
+.carousel{position:relative;overflow:hidden;border-radius:16px;padding:12px 0}
+.rail{display:flex;gap:14px;overflow:auto;scroll-snap-type:x mandatory;padding:0 4px 8px}
+.rail{-ms-overflow-style:none;scrollbar-width:none}
+.rail::-webkit-scrollbar{width:0;height:0;display:none}
+
+/* ALWAYS visible arrows (sửa theo yêu cầu) */
+.arrow{position:absolute;top:42%;transform:translateY(-50%);width:42px;height:42px;border-radius:999px;display:grid;place-items:center;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.14);color:#fff;cursor:pointer;opacity:.6;pointer-events:auto;transition:opacity .25s, background .2s, transform .2s}
+.arrow.left{left:8px}.arrow.right{right:8px}
+.carousel:hover .arrow,.carousel .arrow:focus-visible{opacity:1}
+
+/* === Coverflow (thêm từ index1 (2).html) === */
+.carousel.coverflow{perspective:1200px;padding-bottom:28px}
+.carousel.coverflow .rail{scroll-snap-type:none}
+.carousel.coverflow .poster:hover{transform:none!important}
+.rail.dragging{cursor:grabbing;scroll-snap-type:none}
+.poster{transition:transform .35s cubic-bezier(.22,.61,.36,1),filter .35s ease,opacity .35s ease,box-shadow .35s ease}
+
+/* Dots */
+.dots{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.dot{width:8px;height:8px;border-radius:999px;background:#6b6b6b;opacity:.85;border:1px solid rgba(255,255,255,.15);transform:scale(1);transition:transform .2s, background .2s}
+.dot.active{background:#fff;transform:scale(1.35)}
+
+/* === Deals / Footer / Member (giữ nguyên từ home.css, rút gọn cần thiết) === */
+.deals-carousel .rail{scroll-snap-type:x mandatory}
+.deal{position:relative;border-radius:16px;overflow:hidden;background:#0b0b0b;display:grid;min-height:320px;flex:0 0 100%}
+.deal .bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.4}
+.deal .grad{position:absolute;inset:0;background:radial-gradient(100% 80% at 12% 60%,rgba(229,9,20,.3),rgba(0,0,0,.0) 40%),linear-gradient(90deg,rgba(0,0,0,.85),transparent 50%)}
+.deal .copy{position:relative;z-index:1;align-self:center;padding:20px}
+.deal .panel{width:min(520px,90%);border-radius:16px;background:rgba(0,0,0,.64);border:1px solid rgba(255,255,255,.1);padding:18px 18px 16px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+
+/* ===== Membership v2 ===== */
+.member-v2{
+  position:relative;
+  background: radial-gradient(120% 90% at 10% 70%, rgba(229,9,20,.22), transparent 45%),
+              linear-gradient(180deg, #0a0a0a, #0a0a0a);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:20px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+  padding:28px;
+  overflow:hidden;
+}
+.member-v2 .member-copy{padding:10px 10px 10px 6px}
+.member-v2 .kicker{font-size:12px;letter-spacing:.18em;color:#ffb3b8;text-transform:uppercase;margin-bottom:6px}
+.member-v2 h2{margin:0 0 12px;font-size:28px;line-height:1.1}
+.member-v2 .perks{
+  list-style:none;margin:0 0 14px;padding:0;
+  display:grid;grid-template-columns:repeat(2,minmax(180px,1fr));gap:8px 14px;
+}
+.member-v2 .perks li{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  padding:10px 12px;border-radius:12px;font-size:14px
+}
+.tier-switch{
+  display:inline-grid;grid-auto-flow:column;gap:8px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  padding:6px;border-radius:999px;margin:4px 0 10px
+}
+.tier{
+  height:36px;min-width:98px;padding:0 14px;border-radius:999px;border:0;cursor:pointer;
+  color:#eaeaea;background:transparent;font-weight:700;letter-spacing:.2px;
+}
+.tier.active{color:#000;background:linear-gradient(180deg,#FFD43B,#E5B200)}
+.price{margin:2px 0 12px}
+.price .amt{font-size:28px;font-weight:900;margin-right:6px}
+.btn.xl{height:48px;padding:0 18px;border-radius:12px;font-size:16px}
+.small.trust{margin-top:10px;color:#cfcfcf;opacity:.9}
+
+/* Visual card */
+.member-v2 .visual{position:relative;display:grid;place-items:center}
+.glass-card{
+  position:relative;width:340px;height:210px;border-radius:18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow: 0 20px 60px rgba(229,9,20,.24), inset 0 1px 0 rgba(255,255,255,.25);
+  backdrop-filter: blur(8px);
+  overflow:hidden;
+}
+.glass-card .shine{
+  position:absolute;inset:-40% -40% auto -40%;
+  height:140%; transform:rotate(18deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent);
+  animation: shine 3.5s ease-in-out infinite;
+  opacity:.35; pointer-events:none;
+}
+@keyframes shine{
+  0%{transform:translateX(-40%) rotate(18deg)}
+  50%{transform:translateX(40%) rotate(18deg)}
+  100%{transform:translateX(120%) rotate(18deg)}
+}
+.glass-card .card-logo{
+  position:absolute;left:18px;top:14px;font-weight:900;letter-spacing:.3px
+}
+.glass-card .chip{
+  position:absolute;right:18px;top:16px;width:36px;height:26px;border-radius:6px;
+  background:linear-gradient(135deg,#F8D36B,#FFB84D);box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)
+}
+.glass-card .card-name{
+  position:absolute;left:18px;bottom:14px;font-weight:800;opacity:.9
+}
+.halo{
+  position:absolute;inset:auto 0 -40px 0;height:140px;
+  background:radial-gradient(60% 70% at 50% 10%, rgba(229,9,20,.45), transparent 60%);
+  filter:blur(14px);opacity:.65;pointer-events:none
+}
+
+/* Layout tweak desktop */
+@media (min-width: 1024px){
+  .member-v2{display:grid;grid-template-columns:1.2fr 1fr;align-items:center}
+  .member-v2 .visual{min-height:260px}
+}
+/* === Reveal === */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+/* TIGHTER COVERFLOW SPACING */
+.carousel.coverflow .rail{ gap:0; padding-inline:0; }
+@media (min-width:1024px){
+  .carousel.coverflow .poster{            /* rộng hơn và chồng nhẹ */
+    flex: 0 0 320px;                      /* từ 220px -> 320px */
+    margin: 0 -36px;                      /* overlap để còn ~5 tấm */
+  }
+  .carousel.coverflow .poster img{
+    height: 480px;                        /* từ 320px -> 480px */
+  }
+}
+

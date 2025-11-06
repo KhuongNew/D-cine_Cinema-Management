@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>D-cine — Trang chủ (Coverflow)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/header.css?v=8">
+  <link rel="stylesheet" href="../assets/css/main.css?v=8">
+  <link rel="stylesheet" href="../assets/css/footer.css?v=8">
+</head>
+<body>
+  <!-- Header include -->
+  <div id="hdr-include"></div>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero reveal">
+      <video id="heroVideo" class="hero-video" autoplay muted loop playsinline></video>
+      <div id="heroBackdrop" class="backdrop"></div>
+      <div class="hero-inner">
+        <div class="h-eyebrow" id="heroEyebrow">Now streaming</div>
+        <h1 id="heroTitle">Experience the Magic of Cinema with D-cine</h1>
+        <p id="heroDesc">Watch the latest blockbusters and book your favorite seats in seconds.</p>
+        <div class="cta-row">
+          <a id="heroCta" class="btn" href="showtime.html">🎟 Book Now</a>
+          <button id="heroTrailerBtn" class="btn outline">▶ Watch Trailer</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ON THE BIG SCREEN (coverflow) -->
+    <section class="section reveal" id="bigscreen">
+      <div class="sec-head">
+        <h2>ON THE BIG SCREEN</h2>
+        <a class="more-link" href="movies.html?status=now">View all movies</a>
+      </div>
+
+      <div class="carousel coverflow">
+        <button class="arrow left" aria-label="Previous">&#8249;</button>
+        <button class="arrow right" aria-label="Next">&#8250;</button>
+
+        <div class="rail" id="railBigScreen">
+          <!-- sẽ render bằng JS -->
+        </div>
+        <div class="dots" id="dotsBigScreen" aria-label="Slide indicators"></div>
+      </div>
+    </section>
+
+    <!-- COMING SOON (coverflow) -->
+    <section class="section reveal" id="coming">
+      <div class="sec-head">
+        <h2>COMING SOON</h2>
+        <a class="more-link" href="movies.html?status=soon">View all</a>
+      </div>
+
+      <div class="carousel coverflow">
+        <button class="arrow left" aria-label="Previous">&#8249;</button>
+        <button class="arrow right" aria-label="Next">&#8250;</button>
+
+        <div class="rail" id="railComingSoon">
+          <!-- sẽ render bằng JS -->
+        </div>
+        <div class="dots" id="dotsComingSoon" aria-label="Slide indicators"></div>
+      </div>
+    </section>
+
+    <!-- MEMBERSHIP -->
+    <section class="section member reveal" id="member">
+      <div class="member-wrap member-v2">
+        <div class="member-copy">
+          <div class="kicker">Membership</div>
+          <h2><span class="cine">D-cine Elite</span> — đặc quyền xứng tầm</h2>
+
+          <ul class="perks">
+            <li>🎟 1 lần chọn ghế VIP / tháng</li>
+            <li>🍿 Combo bắp nước ưu đãi 20%</li>
+            <li>⏱️ Mua vé sớm hơn công chúng 24h</li>
+            <li>🎁 Tích điểm đổi quà & voucher</li>
+          </ul>
+
+          <div class="tier-switch" role="tablist" aria-label="Chọn hạng">
+            <button class="tier active" data-tier="gold" aria-selected="true">Gold</button>
+            <button class="tier" data-tier="platinum" aria-selected="false">Platinum</button>
+            <button class="tier" data-tier="diamond" aria-selected="false">Diamond</button>
+          </div>
+
+          <div class="price">
+            <span class="amt" id="tierPrice">79.000đ</span><span class="per">/tháng</span>
+          </div>
+
+          <a class="btn xl" id="joinEliteBtn" href="membership.html">Join Elite</a>
+          <div class="small trust">Hơn <b>120.000</b> thành viên đang hoạt động • ⭐ 4.9/5</div>
+        </div>
+
+        <div class="visual">
+          <div class="glass-card" aria-hidden="true">
+            <div class="shine"></div>
+            <div class="card-logo">D-cine Elite</div>
+            <div class="chip"></div>
+            <div class="card-name">Member</div>
+          </div>
+          <div class="halo"></div>
+        </div>
+      </div>
+    </section>
+</main>
+  <!-- Footer include -->
+<div id="ftr-include"></div>
+  <!-- JS -->
+  <script>
+    window.API_BASE = window.API_BASE || '/api';
+  </script>
+  <script src="../assets/js/main.js?v=8" defer></script>
+  <script src="../assets/js/footer.js?v=3" defer></script>
+</body>
+</html>

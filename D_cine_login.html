@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>D-cine — Đăng nhập</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/auth.login.css">
+</head>
+<body>
+  <main class="page" role="main">
+    <section class="hero" aria-label="Cinematic preview">
+      <a class="back" href="#" aria-label="Quay lại">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="back-text">Quay lại</span>
+      </a>
+
+      <div class="hero-copy">
+        <h2>Đắm chìm cùng <span style="color:var(--accent)">D-cine</span></h2>
+        <p>Đặt vé nhanh • Chọn ghế trực quan • Nhận QR tức thì. Hỗ trợ <b>IMAX</b>, <b>3D</b>, phụ đề/ lồng tiếng đa dạng.</p>
+        <div class="chips">
+          <span class="chip">Suất tối nay gần bạn</span>
+          <span class="chip">Ưu đãi thành viên</span>
+          <span class="chip">2.000+ suất/tuần</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="Sign in form">
+      <div class="wrap" id="formWrap">
+        <header>
+          <div class="logo" aria-label="D-cine logo">
+            <span class="d">D</span><span class="cine">-cine</span>
+          </div>
+        </header>
+
+        <h1 class="greet">Đăng nhập</h1>
+        <p class="hint">
+          Chọn cách đăng nhập và điền thông tin để tiếp tục.
+        </p>
+
+        <div class="seg" role="tablist" aria-label="Hình thức đăng nhập">
+          <button id="segEmail" role="tab" aria-selected="true" class="active" type="button">Email</button>
+          <button id="segPhone" role="tab" aria-selected="false" type="button">Số điện thoại</button>
+          <button id="segUser" role="tab" aria-selected="false" type="button">Tên đăng nhập</button>
+        </div>
+
+        <div id="formError" class="form-error" role="alert" aria-live="assertive"></div>
+        <div id="formSuccess" class="form-success" role="status" aria-live="polite"></div>
+
+        <form id="loginForm" action="#" method="post" novalidate>
+          <div class="field">
+            <label for="ident"><span id="ident-label">Email</span></label>
+            <div class="input" id="identBox">
+              <span class="prefix" aria-hidden="true"></span>
+              <input id="ident" name="ident" type="email" placeholder="yourname@example.com" autocomplete="username" aria-describedby="err-ident hint-ident" required />
+              <span class="suffix" aria-hidden="true"></span>
+            </div>
+            <p class="hintline" id="hint-ident" style="display:none"></p>
+            <p class="err" id="err-ident" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="password">Mật khẩu</label>
+            <div class="input" id="passwordBox">
+              <span class="prefix" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="11" width="18" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 11V8a5 5 0 1110 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              <input id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password" aria-describedby="err-password caps-hint" required />
+              <button class="icon-btn suffix" id="togglePw" type="button" aria-label="Hiện/ẩn mật khẩu" aria-pressed="false">
+                <svg id="eyeOff" class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M10.58 10.58A3 3 0 0012 15a3 3 0 001.42-.38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M17.94 17.94C15.9 19.22 13.54 20 12 20 6 20 3 12 3 12a17.9 17.9 0 013.06-4.95" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M10.73 5.08A9.84 9.84 0 0112 4c6 0 9 8 9 8a17.83 17.83 0 01-2.5 4.15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <svg id="eyeOn" class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none">
+                  <path d="M1 12s3-8 11-8 11 8 11 8-3 8-11 8S1 12 1 12z" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+              </button>
+            </div>
+            <p class="caps" id="caps-hint">Đang bật Caps Lock</p>
+            <p class="err" id="err-password" aria-live="polite"></p>
+          </div>
+
+          <div class="row">
+            <label class="remember">
+              <input id="remember" name="remember" type="checkbox" />
+              <span>Ghi nhớ đăng nhập</span>
+            </label>
+            <a href="D_cine_forgot.html" id="forgot">Quên mật khẩu?</a>
+          </div>
+
+          <button class="btn" id="signInBtn" type="submit" disabled>
+            <span class="btn-label">Đăng nhập</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+
+          <button class="btn btn-ghost" id="guestBtn" type="button">Tiếp tục mà không đăng nhập</button>
+
+          <p class="signup" style="text-align:center; color:var(--muted); font-size:13px;">
+            Chưa có tài khoản? 
+            <a class="alt" href="D_cine_signup.html" style="color:var(--text); font-weight:600;">Đăng ký</a>
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="../assets/js/auth.login.js"></script>
+</body>
+</html>

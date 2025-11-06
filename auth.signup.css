@@ -1,0 +1,143 @@
+:root{
+  --bg:#050505; --panel:#080808; --accent:#E50914; --accent-2:#C6101A;
+  --text:#FFFFFF; --muted:#A0A0A0; --muted-2:#999999;
+  --field:#0b0b0b; --stroke:#7a7a7a; --radius:12px; --danger:#E50914;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+.page{min-height:100vh; display:grid; grid-template-columns:1.08fr 1fr;}
+
+.hero{position:relative; overflow:hidden; isolation:isolate; background:#000;}
+.hero::before{
+  content:""; position:absolute; inset:0;
+  background:url('../images/banners/tanjiro_akaza_infinity_castle.jpg') center/cover no-repeat;
+  filter:saturate(1.08) contrast(1.05) brightness(1.08); transform:scale(1.02);
+}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.3) 40%, transparent 62%);
+  z-index:1;
+}
+.back{
+  position:absolute; top:22px; left:22px; z-index:3; display:inline-flex; align-items:center; gap:10px;
+  padding:8px 12px; border-radius:999px; background:rgba(0,0,0,.35); color:#fff; text-decoration:none;
+  border:1px solid rgba(255,255,255,.08); backdrop-filter:blur(6px);
+  transition:background-color .2s ease, border-color .2s ease;
+}
+.back:hover{background:rgba(0,0,0,.55); border-color:rgba(255,255,255,.18)}
+.back svg{width:18px;height:18px;flex:none}
+.back-text{font-weight:600; font-size:13px; letter-spacing:.2px}
+
+.hero-copy{position:absolute; left:36px; bottom:36px; z-index:2; max-width:560px;}
+.hero-copy h2{margin:0 0 8px; font-size:28px; font-weight:800; letter-spacing:.2px; text-shadow:0 2px 8px rgba(0,0,0,.7)}
+.hero-copy p{margin:0 0 10px; color:#f3f3f3; font-size:14px; line-height:1.6; text-shadow:0 2px 8px rgba(0,0,0,.7)}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chip{font-size:12px; color:#fff; background:rgba(229,9,20,.14); border:1px solid rgba(229,9,20,.45); padding:6px 10px; border-radius:999px; box-shadow:0 2px 10px rgba(0,0,0,.25)}
+@media (max-width:1366px){ .chips{gap:10px} }
+
+.panel{display:grid; place-items:center; background:var(--panel);}
+.wrap{width:min(520px,92vw); padding:26px 10px;}
+.logo{
+  display:flex; align-items:baseline; font-weight:800;
+  letter-spacing:.2px; font-size:28px; gap:6px; line-height:1;
+}
+.logo .d{ color:var(--accent); font-weight:900; font-size:38px; line-height:1; }
+.logo .cine{ color:#fff; line-height:1; transform:translateY(-2px); }
+
+.greet{margin:16px 0 6px; font-weight:800; font-size:26px; letter-spacing:.1px;}
+.hint{margin:0 0 16px; color:#cfcfcf; font-weight:400; font-size:13px}
+.only-desktop{display:inline} @media(max-width:768px){.only-desktop{display:none}}
+
+.seg{display:inline-flex; border:1px solid #4d4d4d; background:#0a0a0a; border-radius:999px; padding:3px; gap:4px; margin-bottom:10px}
+.seg button{appearance:none; border:0; border-radius:999px; padding:8px 14px; color:#d9d9d9; background:transparent; cursor:pointer; font-weight:700; font-size:12.5px; transition:background-color .2s,color .2s,transform .06s}
+.seg button.active{background:var(--accent); color:#fff; box-shadow:0 6px 20px rgba(229,9,20,.35); transform:translateY(-1px)}
+.seg button:hover,.seg button:active{transform:translateY(-1px)}
+
+form{display:grid; gap:16px}
+.field{display:grid; gap:6px}
+label{font-size:12.5px; color:#fff; font-weight:600}
+
+.input{position:relative; display:flex; align-items:center; background:var(--field); border:1px solid var(--stroke); color:#fff; border-radius:var(--radius); padding:0 12px; height:48px; transition:border-color .2s, box-shadow .2s, transform .06s}
+.input:has(input:focus-visible){border-color:var(--accent); box-shadow:0 0 0 3px rgba(229,9,20,.18)}
+.input input{flex:1; background:transparent; border:0; outline:0; color:#fff; font-size:15px; caret-color:var(--accent); height:100%}
+.input input::placeholder{color:var(--muted-2)}
+.prefix{color:#d0d0d0; margin-right:10px; display:inline-flex}
+.suffix{color:#cfcfcf; margin-left:8px; display:inline-flex}
+.input.error{border-color:var(--danger); box-shadow:0 0 0 3px rgba(229,9,20,.18); animation:shakeInput .3s ease-out}
+.err{color:var(--danger); font-size:12px; line-height:1.2; margin-top:-2px; min-height:1.2em}
+.hintline{color:#bdbdbd; font-size:12px; margin-top:-2px}
+
+.icon-btn{background:transparent; border:0; color:#cfcfcf; cursor:pointer; padding:6px; border-radius:10px; transition:background-color .2s}
+.icon-btn:hover{background:#141414}
+.icon{width:20px; height:20px; display:block}
+
+.row{display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:12.5px}
+.row a{color:#ddd; text-decoration:none; transition:color .2s}
+.row a:hover{color:#fff}
+
+.agree{display:flex; gap:10px; align-items:flex-start; color:#ddd; font-size:13px}
+.agree input{appearance:none; width:16px; height:16px; border-radius:4px; border:1px solid var(--stroke); background:#0a0a0a; display:grid; place-content:center; margin-top:2px; transition:all .2s}
+.agree input:checked{border-color:var(--accent); background:var(--accent)}
+.agree input:checked::after{content:""; width:9px; height:9px; background:#fff; border-radius:2px}
+
+.btn{position:relative; overflow:hidden; display:inline-flex; justify-content:center; align-items:center; gap:10px; height:48px; width:100%; border-radius:12px; border:0; cursor:pointer; background:linear-gradient(180deg,#F01A25,var(--accent-2)); color:#fff; font-weight:800; letter-spacing:.3px; box-shadow:0 8px 20px rgba(229,9,20,.2); transition:all .2s}
+.btn:hover{background:linear-gradient(180deg,#C6101A,#A10D15); box-shadow:0 10px 25px rgba(229,9,20,.3); transform:translateY(-1px)}
+.btn:active{transform:scale(.98); box-shadow:0 4px 15px rgba(229,9,20,.25)}
+.btn[disabled]{opacity:.6; cursor:not-allowed; box-shadow:none; background:#555}
+.btn-label{pointer-events:none; transition:opacity .2s}
+.spinner{display:none; width:18px; height:18px; border:2px solid rgba(255,255,255,.25); border-top-color:#fff; border-radius:50%; animation:spin 1s linear infinite; position:absolute}
+.btn.loading .spinner{display:inline-block}
+.btn.loading .btn-label{opacity:0}
+
+.btn-ghost{background:transparent; border:1px solid #1d1d1d; color:#eee; box-shadow:none}
+.btn-ghost:hover{background:#0f0f0f}
+
+.ripple{position:absolute; border-radius:999px; transform:translate(-50%,-50%); pointer-events:none; background:rgba(255,255,255,.22); animation:ripple .6s ease-out forwards}
+
+.form-error{color:var(--danger); font-weight:600; font-size:13px; display:none; margin:6px 0 12px}
+.form-success{color:#35c28b; font-weight:600; font-size:13px; display:none; margin:6px 0 12px}
+
+.pw-meter{height:8px; border-radius:6px; background:#131313; overflow:hidden}
+.pw-meter > span{display:block; height:100%; width:0%; background:linear-gradient(90deg,#ff4d4f,#ffec3d,#73d13d); transition:width .25s}
+.pw-tips{color:#bdbdbd; font-size:12px; margin-top:6px}
+
+.shake{animation:shakeWrap .36s cubic-bezier(.36,.07,.19,.97) both}
+:root{
+  --field-gap:14px;
+  --sub-gap:4px;
+}
+.greet{ margin:14px 0 4px; }
+.hint{  margin:0 0 12px; }
+.seg{   margin-bottom:8px; }
+form{   gap:var(--field-gap); }
+.field{ gap:var(--sub-gap); }
+.hintline{ margin-top:-1px; }
+.err{ margin:2px 0 8px; min-height:0; }
+.pw-meter{  margin-top:6px; }
+.pw-tips{   margin-top:4px; }
+
+.page{ height:100vh; min-height:unset; }
+body{ overflow:hidden; }
+.panel{ height:100vh; overflow-y:auto; }
+.hero{ position:sticky; top:0; height:100vh; }
+.hero-copy{ bottom:clamp(24px, 6vh, 52px); }
+
+@media (max-width:1024px){
+  body{ overflow:auto; }
+  .page{ height:auto; }
+  .panel{ height:auto; overflow:visible; }
+}
+
+@keyframes shakeWrap{10%,90%{transform:translateX(-1px)}20%,80%{transform:translateX(2px)}30%,50%,70%{transform:translateX(-4px)}40%,60%{transform:translateX(4px)}}
+@keyframes shakeInput{10%,90%{transform:translateX(-1px)}20%,80%{transform:translateX(2px)}30%,50%,70%{transform:translateX(-3px)}40%,60%{transform:translateX(3px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes ripple{from{width:0;height:0;opacity:.6} to{width:420px;height:420px;opacity:0}}
+
+@media (max-width:1024px){.page{grid-template-columns:1fr}.hero{display:none}.wrap{width:min(560px,92vw)}}

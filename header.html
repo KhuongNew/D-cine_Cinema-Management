@@ -1,0 +1,96 @@
+<!-- header.html (FINAL / desktop-only) -->
+<header id="site-header" class="header" role="banner">
+  <div class="hdr-wrap">
+    <!-- Logo -->
+    <a href="index.html" class="logo" aria-label="D-cine">
+      <span class="d">D</span><span class="cine">-cine</span>
+    </a>
+
+    <!-- Main nav -->
+    <nav class="main-nav" aria-label="Điều hướng chính">
+      <ul class="menu">
+        <li class="mi has-dd">
+          <a href="movies.html" class="nav-link" data-match="movies">Phim</a>
+          <div class="dd">
+            <a href="movies.html?status=now">Đang chiếu</a>
+            <a href="movies.html?status=soon">Sắp chiếu</a>
+            <a href="showtime.html">Suất chiếu hôm nay</a>
+            <a href="movies.html?filter=genre">Thể loại</a>
+          </div>
+        </li>
+        <li class="mi has-dd">
+          <a href="theaters.html" class="nav-link" data-match="theaters">Rạp</a>
+          <div class="dd">
+            <a href="theaters.html">Hệ thống rạp</a>
+            <a href="showtime.html?by=theater">Lịch theo rạp</a>
+          </div>
+        </li>
+        <li class="mi has-dd">
+          <a href="promotions.html" class="nav-link" data-match="promotions">Khuyến mãi</a>
+          <div class="dd">
+            <a href="promotions.html">Ưu đãi hiện hành</a>
+            <a href="membership.html">Thành viên</a>
+          </div>
+        </li>
+        <li class="mi has-dd">
+          <a href="shop.html" class="nav-link" data-match="shop">Shop</a>
+          <div class="dd">
+            <a href="shop.html#combo">Combo bắp nước</a>
+            <a href="shop.html#gift">Quà tặng</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Right tools -->
+    <div class="hdr-tools">
+      <!-- Member (guest) -->
+      <a class="member-chip guest-only" href="membership.html" title="Tham gia D-cine Elite">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.2 1 5.9L12 17.6 6.8 19.8l1-5.9-4.3-4.2 5.9-.9L12 3.5z"/>
+        </svg> Tham gia Elite
+      </a>
+
+      <!-- Search -->
+      <button id="searchBtn" class="icon-btn" aria-label="Mở tìm kiếm" aria-expanded="false" aria-controls="searchForm">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="M20 20L17 17"/>
+        </svg>
+      </button>
+      <form id="searchForm" class="search" role="search" action="movies.html">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="M20 20L17 17"/>
+        </svg>
+        <input id="searchInput" type="text" name="q" placeholder="Tìm kiếm phim, diễn viên..." aria-label="Tìm kiếm" />
+        <button class="search-go" aria-label="Tìm">Tìm</button>
+      </form>
+
+      <!-- CTA -->
+      <a class="cta-buy" href="showtime.html" aria-label="Mua vé ngay">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 8a2 2 0 012-2h14a2 2 0 012 2v2a2 2 0 010 4v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 010-4V8z"/>
+          <path d="M12 7v10"/><path d="M9.5 10h5"/><path d="M9.5 14h5"/>
+        </svg> Mua vé ngay
+      </a>
+
+      <!-- Auth: guest -->
+      <div class="auth-actions guest-only">
+        <a class="btn-link" href="html/D_cine_login.html">Đăng nhập</a>
+        <a class="btn-link strong" href="html/D_cine_signup.html">Đăng ký</a>
+      </div>
+
+      <!-- Auth: logged -->
+      <div class="auth-only" hidden>
+        <button id="userBtn" class="avatar" aria-haspopup="true" aria-expanded="false">
+          <img id="avatarImg" alt="" hidden>
+          <span id="avatarFallback" class="initial" aria-hidden="true">U</span>
+        </button>
+        <div id="userMenu" class="user-menu" hidden>
+          <a href="tickets.html">Vé của tôi</a>
+          <a href="profile.html">Hồ sơ</a>
+          <button type="button" id="logoutBtn" class="menu-danger">Đăng xuất</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
